@@ -1,4 +1,4 @@
-# LaTeX build
+# LaeX build
 out/
 *.aux
 *.bbl
@@ -20,3 +20,6 @@ out/
 # OS / editor
 .DS_Store
 Thumbs.db
+
+# Do not ignore the output pdf
+!out/main.pdf
