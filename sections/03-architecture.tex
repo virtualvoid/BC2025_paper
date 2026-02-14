@@ -26,3 +26,17 @@ This infrastructure approach aligns with modern enterprise deployment practices 
 
 
 The architectural decisions follow established enterprise design principles \cite{fowler,sommerville} and align with modern service-oriented system patterns.
+
+\subsection{Configurable Metadata Model}
+
+In addition to core record attributes, the system supports configurable metadata bound to the evidence type (registry evidence category). 
+Each evidence type defines a set of user-defined fields (metadata schema) that are automatically projected into the record creation and update forms. 
+This approach allows organizations to adapt the system to heterogeneous document agendas without code changes, while preserving a unified storage and audit model.
+
+Metadata fields are stored as structured key--value pairs with explicit typing and validation rules (e.g., text, numeric, boolean, date, or enumerations). 
+At runtime, the frontend dynamically renders form controls based on the evidence-level metadata definition, and the backend enforces validation to prevent schema drift and ensure data quality.
+
+From a compliance perspective, evidence-bound metadata improves traceability and classification quality by ensuring that domain-specific attributes required by internal policies or legislation are consistently captured during record registration. 
+This aligns with standard records management principles that emphasize controlled metadata, retention context, and reproducibility of record descriptions \cite{iso15489,moreq2010}.
+
+The design follows a schema-driven approach, reducing implementation-level customization and enabling controlled evolution of metadata requirements through configuration rather than redeployment.
