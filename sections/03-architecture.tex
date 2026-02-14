@@ -1,0 +1,25 @@
+﻿\section{System Architecture}
+
+The proposed system follows a modular service-oriented architecture designed to ensure scalability, extensibility, and separation of concerns. 
+The backend is implemented using the .NET 10 platform and is structured into multiple logical components responsible for records management, workflow execution, authentication, and supporting infrastructure services.
+
+Structured metadata related to records, classification hierarchies, workflow definitions, and execution states are stored in a relational database (Microsoft SQL Server). 
+This choice enables strong consistency guarantees and transactional integrity for compliance-sensitive operations.
+
+Binary document content is stored separately from structured metadata. 
+Uploaded files are persisted in a document-oriented storage system (MongoDB), which is optimized for handling large binary objects and scalable file storage. 
+This architectural separation between metadata and file content improves flexibility, supports horizontal scaling of storage components, and reduces performance bottlenecks in relational persistence layers.
+
+Inter-service communication and asynchronous processing are supported by a message broker (RabbitMQ), which facilitates decoupled execution of background tasks and workflow-related events. 
+A distributed caching layer (Redis) is employed to improve performance for frequently accessed metadata and configuration data.
+
+Authentication and authorization are handled via an external identity provider (Keycloak), enabling standards-based authentication protocols and role-based access control. 
+The system exposes its functionality through a REST-based API layer, allowing integration with external systems and frontend clients.
+
+The user interface is implemented as a single-page application using React and TypeScript. 
+A component-based UI framework is employed to ensure consistency and maintainability. 
+This separation between backend services and frontend client supports independent evolution of presentation and business logic layers.
+
+For deployment, the system is containerized and supports Docker-based orchestration. 
+The architecture is designed to be environment-agnostic, enabling both local development deployments and cloud-ready configurations. 
+This infrastructure approach aligns with modern enterprise deployment practices and ensures portability across different hosting environments.

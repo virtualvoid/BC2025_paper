@@ -1,0 +1,51 @@
+\documentclass[conference]{IEEEtran}
+
+\makeatletter
+\def\input@path{{sections/}}
+\makeatother
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage{graphicx}
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref}
+\usepackage{booktabs}
+
+% --- Bibliography (BibTeX) ---
+\bibliographystyle{IEEEtran}
+
+\title{Design and Implementation of a Workflow-Enabled Enterprise Document Management System with Legislative Compliance}
+
+\author{
+\IEEEauthorblockN{Juraj Suchan}
+\IEEEauthorblockA{
+Department of Applied Informatics\\
+Faculty of Informatics\\
+Pan-European University\\
+Field of Study: Informatics\\
+Bratislava, Slovakia\\
+Email: xsuchan@paneurouni.com
+}
+}
+
+\begin{document}
+\maketitle
+
+\begin{IEEEkeywords}
+document management system, workflow engine, microservices, records management, legislative compliance
+\end{IEEEkeywords}
+
+\input{sections/00-abstract}
+\input{sections/01-introduction}
+\input{sections/02-related-work}
+\input{sections/03-architecture}
+\input{sections/04-workflow-engine}
+\input{sections/05-compliance}
+\input{sections/06-discussion}
+\input{sections/07-conclusion}
+
+%\nocite{*}
+%\bibliography{refs}
+
+\end{document}

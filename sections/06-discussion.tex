@@ -1,0 +1,16 @@
+﻿\section{Discussion}
+
+The presented system demonstrates that integrating records management and workflow execution within a unified architecture can significantly reduce architectural fragmentation typically observed in enterprise environments. 
+By avoiding separation between document storage and process orchestration layers, the system maintains consistent state management and minimizes synchronization complexity.
+
+The service-oriented backend architecture enables horizontal scalability and modular evolution of individual components. 
+The use of asynchronous messaging for workflow-related events decouples execution logic from synchronous API interactions, improving responsiveness and resilience under load. 
+The separation between workflow definitions and runtime instances further enhances maintainability, as structural changes in process models do not affect already running workflow executions.
+
+From a performance perspective, the introduction of a distributed caching layer reduces database load for frequently accessed configuration and metadata entities. 
+The reliance on a relational database for compliance-critical operations ensures transactional integrity and predictable behavior, which is particularly important in records lifecycle management scenarios.
+
+Despite these advantages, certain limitations remain. While the system provides structural support for retention policies and disposal types, 
+automated lifecycle enforcement mechanisms require further refinement and real-world validation. Additionally, large-scale deployment scenarios would benefit from extended performance benchmarking and distributed execution analysis.
+
+Nevertheless, the architectural design establishes a solid technical foundation for enterprise-grade document and records management systems, combining configurability, traceability, and scalability within a cohesive framework.
