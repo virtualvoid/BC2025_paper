@@ -1,7 +1,7 @@
 ﻿\section{System Architecture}
 
 The proposed system follows a modular service-oriented architecture designed to ensure scalability, extensibility, and separation of concerns. 
-The backend is implemented using the .NET 10 platform and is structured into multiple logical components responsible for records management, workflow execution, authentication, and supporting infrastructure services.
+The backend is implemented using the .NET 10 platform \cite{microsoft_dotnet} and is structured into multiple logical components responsible for records management, workflow execution, authentication, and supporting infrastructure services.
 
 Structured metadata related to records, classification hierarchies, workflow definitions, and execution states are stored in a relational database (Microsoft SQL Server). 
 This choice enables strong consistency guarantees and transactional integrity for compliance-sensitive operations.
@@ -23,3 +23,6 @@ This separation between backend services and frontend client supports independen
 For deployment, the system is containerized and supports Docker-based orchestration. 
 The architecture is designed to be environment-agnostic, enabling both local development deployments and cloud-ready configurations. 
 This infrastructure approach aligns with modern enterprise deployment practices and ensures portability across different hosting environments.
+
+
+The architectural decisions follow established enterprise design principles \cite{fowler,sommerville} and align with modern service-oriented system patterns.
