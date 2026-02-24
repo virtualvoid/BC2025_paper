@@ -1,0 +1,57 @@
+name: Build & Release PDF
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  build-pdf:
+    runs-on: ubuntu-latest
+
+    container:
+      image: ghcr.io/xu-cheng/texlive-full:latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build PDF (pdflatex -> makeglossaries -> biber -> pdflatex x2)
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          # 1) prvý prechod
+          pdflatex -interaction=nonstopmode -file-line-error -synctex=1 main.tex
+
+          # 2) glossaries
+          makeglossaries main
+
+          # 3) biblatex/biber
+          bibtex main
+
+          # 4) dobeh referencií
+          pdflatex -interaction=nonstopmode -file-line-error -synctex=1 main.tex
+          pdflatex -interaction=nonstopmode -file-line-error -synctex=1 main.tex
+
+          # sanity check
+          test -f main.pdf
+          ls -lah main.pdf
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: thesis-pdf
+          path: main.pdf
+          if-no-files-found: error
+
+      - name: Create GitHub Release (attach PDF)
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: main.pdf
+          generate_release_notes: true
