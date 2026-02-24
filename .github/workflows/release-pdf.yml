@@ -20,25 +20,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Build PDF (pdflatex -> makeglossaries -> biber -> pdflatex x2)
+      - name: Build PDF (pdflatex -> bibtex -> pdflatex x2)
         shell: bash
         run: |
           set -euo pipefail
-
-          # 1) prvý prechod
+      
           pdflatex -interaction=nonstopmode -file-line-error -synctex=1 main.tex
-
-          # 2) biblatex/biber
+      
           bibtex main
-
-          # 3) dobeh referencií
+      
           pdflatex -interaction=nonstopmode -file-line-error -synctex=1 main.tex
           pdflatex -interaction=nonstopmode -file-line-error -synctex=1 main.tex
-
-          # sanity check
+      
           test -f main.pdf
           ls -lah main.pdf
-
+    
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
