@@ -23,3 +23,6 @@ Thumbs.db
 
 # Do not ignore the output pdf
 !out/main.pdf
+
+merged.tex
+paper.docx
