@@ -1,17 +1,29 @@
 ﻿%!TEX root = ../main.tex
 \section{Discussion}
 
-The presented system demonstrates that integrating records management and workflow execution within a unified architecture can significantly reduce architectural fragmentation typically observed in enterprise environments. 
-By avoiding separation between document storage and process orchestration layers, the system maintains consistent state management and minimizes synchronization complexity.
+The presented architecture demonstrates that integrating records management and workflow orchestration within a unified domain model can reduce structural fragmentation commonly observed in enterprise information systems. 
+In traditional environments, document storage, lifecycle management, and process execution are frequently implemented as loosely coupled subsystems connected through integration layers. 
+Such separation often introduces synchronization challenges, redundant state representations, and increased operational complexity.
 
-The service-oriented backend architecture enables horizontal scalability and modular evolution of individual components. 
-The use of asynchronous messaging for workflow-related events decouples execution logic from synchronous API interactions, improving responsiveness and resilience under load. 
-The separation between workflow definitions and runtime instances further enhances maintainability, as structural changes in process models do not affect already running workflow executions.
+By embedding workflow execution directly into the records management model, the proposed system maintains a single source of truth for both document state and process state. 
+This architectural consolidation reduces impedance mismatch between storage and orchestration layers and enables consistent lifecycle tracking across document-related activities.
 
-From a performance perspective, the introduction of a distributed caching layer reduces database load for frequently accessed configuration and metadata entities. 
-The reliance on a relational database for compliance-critical operations ensures transactional integrity and predictable behavior, which is particularly important in records lifecycle management scenarios.
+The separation between workflow definitions (design-time structures) and workflow instances (runtime state) represents a deliberate design decision aimed at balancing configurability and stability. 
+Versioned definitions allow process evolution without disrupting historical executions, supporting auditability and reproducibility. 
+This distinction is particularly relevant in compliance-sensitive environments, where historical process logic must remain reconstructible.
 
-Despite these advantages, certain limitations remain. While the system provides structural support for retention policies and disposal types, 
-automated lifecycle enforcement mechanisms require further refinement and real-world validation. Additionally, large-scale deployment scenarios would benefit from extended performance benchmarking and distributed execution analysis.
+From a scalability perspective, the service-oriented backend architecture allows modular evolution of individual components and supports horizontal scaling of stateless services. 
+The introduction of asynchronous messaging for workflow-related events decouples long-running operations from synchronous API interactions, improving system responsiveness and fault tolerance. 
+This event-driven model aligns with contemporary distributed system design practices and enhances resilience under variable load conditions.
 
-Nevertheless, the architectural design establishes a solid technical foundation for enterprise-grade document and records management systems, combining configurability, traceability, and scalability within a cohesive framework.
+The hybrid metadata persistence strategy—combining relational schema definitions with serialized runtime payloads—provides flexibility while preserving structural validation guarantees. 
+However, this approach also introduces trade-offs. 
+Serialized metadata values may limit direct relational querying capabilities and can require additional processing for analytical scenarios. 
+Future extensions may consider selective indexing or projection strategies for frequently queried metadata attributes.
+
+Despite these strengths, certain limitations remain. 
+While the system structurally supports retention policies and disposal types, automated lifecycle enforcement and large-scale disposal workflows require further empirical validation. 
+In addition, comprehensive performance benchmarking under high concurrency and distributed deployment scenarios would provide deeper insight into system behavior at scale.
+
+Overall, the architectural design establishes a technically coherent foundation for enterprise-grade document and records management systems. 
+The integration of classification hierarchies, configurable metadata, workflow orchestration, and compliance-oriented modeling demonstrates that flexibility and regulatory alignment need not be treated as mutually exclusive design goals.

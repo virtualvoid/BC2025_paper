@@ -1,15 +1,22 @@
 ﻿%!TEX root = ../main.tex
 \section{Background and Related Work}
-Document and records management systems have been extensively studied in the context of enterprise information systems. 
-Standards such as MoReq and ISO 15489 define principles for records lifecycle management, including classification, retention policies, disposal procedures, and auditability. 
-These frameworks emphasize the importance of structured metadata, hierarchical classification schemes, and controlled records disposition processes.
 
-Modern enterprise software increasingly adopts service-oriented or microservice-based architectures to improve scalability and modularity. 
-In parallel, workflow management systems have evolved to support dynamic process modeling, configurable execution logic, and distributed task orchestration. 
-However, many existing solutions treat document management and workflow orchestration as separate subsystems, connected through integration layers.
+Document and records management systems have long been examined within the field of enterprise information systems and information governance. 
+Normative frameworks such as ISO 15489 and MoReq2010 define conceptual and functional requirements for records lifecycle management, including classification schemes, retention schedules, disposal procedures, and auditability~\cite{iso15489,moreq2010}. 
+These standards emphasize structured metadata models, hierarchical classification, and controlled disposition mechanisms to ensure long-term traceability and legal compliance.
 
-This separation can lead to inconsistencies in state management, duplication of lifecycle information, and increased architectural complexity. 
-Several research works propose tighter integration between content management and process execution, yet practical implementations often prioritize either document storage or workflow flexibility.
+From an architectural perspective, contemporary enterprise software increasingly adopts service-oriented or microservice-based approaches to enhance scalability, modularity, and independent component evolution. 
+At the same time, workflow management systems and business process engines have evolved to support configurable process definitions, dynamic routing logic, and distributed task orchestration. 
+Such systems frequently rely on graph-based process representations and versioned execution models to enable adaptability in changing business environments.
 
-The solution presented in this paper builds upon established records management principles (\cite{iso15489,moreq2010}) while integrating a configurable workflow engine directly into the core system architecture. 
-The objective is not to redefine records management standards, but to demonstrate how compliance-oriented data modeling and workflow execution can coexist within a unified enterprise system.
+Despite these advancements, document management and workflow orchestration are commonly implemented as separate subsystems. 
+In many enterprise solutions, workflow engines operate on top of document repositories through integration layers or API-based coupling. 
+While this separation promotes loose coupling, it can also introduce inconsistencies in lifecycle state management, duplication of contextual data, and increased architectural complexity. 
+The document lifecycle may be governed partly by records management rules and partly by external workflow states, leading to potential ambiguity in compliance-sensitive scenarios.
+
+Several research contributions and industrial platforms propose tighter integration between content management and process execution. 
+However, existing implementations often prioritize either robust document storage with compliance support or highly flexible workflow orchestration, rather than designing both aspects as inherently interdependent components of a single domain model.
+
+The approach presented in this paper builds upon established records management principles while embedding a configurable workflow engine directly into the core data and execution model of the system. 
+Instead of treating workflow as an external automation layer, workflow execution is aligned with classification structures, retention logic, and audit mechanisms. 
+The contribution does not redefine existing standards, but demonstrates an architectural strategy for integrating compliance-oriented records modeling with versioned and extensible workflow execution within a unified enterprise system.

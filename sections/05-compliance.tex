@@ -1,24 +1,30 @@
 ﻿%!TEX root = ../main.tex
 \section{Legislative Compliance Model}
 
-The records management component of the system is designed to reflect established principles of structured classification and lifecycle control. 
-The data model incorporates hierarchical classification entities that represent subject-based groupings of records. 
-These classification structures allow consistent assignment of documents to predefined categories and support standardized numbering schemes.
+The records management component of the system is explicitly designed to reflect legally grounded principles of structured classification, controlled retention, and auditable lifecycle management. 
+Rather than treating compliance as an external constraint, regulatory requirements are embedded directly into the core domain model.
 
-The core domain model includes entities representing evidence types, volumes, records, and case files. 
-This structure enables separation between abstract record categories and their concrete yearly or contextual instances. 
-Such modeling supports scalable growth of registry data while preserving logical grouping and traceability across different operational contexts.
+The data model incorporates hierarchical classification entities representing subject-based groupings of records. 
+These entities correspond to registry plans and classification structures defined in archival practice, enabling systematic categorization and consistent assignment of documents to predefined groups. 
+Such hierarchical modeling ensures semantic clarity, supports standardized numbering schemes, and enables structured aggregation of records across organizational units.
 
-Retention and disposal mechanisms are incorporated into the data model as lifecycle attributes associated with classification entities. 
-While the current implementation provides structural support for defining retention periods and disposal types, the lifecycle automation layer is designed for further extensibility. 
-This approach allows gradual refinement of compliance logic without altering the core data schema.
+The core domain model distinguishes between evidence types, volumes, records, and case files. 
+Evidence types represent abstract registry categories, while volumes and records represent their concrete temporal or contextual instantiations. 
+This layered modeling approach separates classification semantics from operational instances, ensuring scalability of registry data while preserving logical continuity and traceability.
 
-To ensure traceability and accountability, the system maintains audit-related metadata across key entities. 
-Creation and modification timestamps, as well as user attribution fields, are persistently stored and integrated with the authentication subsystem. 
-This design supports transparency and aligns with compliance-oriented requirements for records management systems.
+Retention and disposal attributes are modeled as explicit lifecycle properties associated with classification entities. 
+Each classification group may define retention periods, disposal categories, and archival handling rules. 
+Although full lifecycle automation (e.g., automatic disposal workflows) may evolve over time, the structural representation of retention metadata is embedded at the schema level, ensuring that lifecycle logic can be implemented without fundamental restructuring of the data model.
 
-By integrating hierarchical classification, lifecycle attributes, and auditability into the core domain model, 
-the system establishes a structured foundation for regulatory compliance while remaining adaptable to evolving organizational requirements.
+Auditability is ensured through persistent recording of creation, modification, and attribution metadata across compliance-sensitive entities. 
+Timestamp fields and user identifiers are tightly integrated with the authentication subsystem, enabling accountability, traceability of actions, and reconstruction of record evolution. 
+This design aligns with transparency requirements and supports inspection or audit scenarios.
 
+By integrating hierarchical classification, lifecycle attributes, and audit mechanisms into the core domain model, 
+the system establishes a structurally compliant foundation rather than relying solely on procedural enforcement.
 
-The compliance model is derived from Slovak archival legislation, including Act No. 395/2002 Coll. on Archives and Registries \cite{zakon395} and Decree No. 628/2002 Coll. \cite{vyhlaska628}, while also considering EU-level regulations such as eIDAS \cite{eidas} and GDPR \cite{gdpr2016}.
+The compliance model is derived from Slovak archival legislation, including Act No.~395/2002 Coll. on Archives and Registries~\cite{zakon395} 
+and Decree No.~628/2002 Coll.~\cite{vyhlaska628}. 
+In addition, the system design considers EU-level regulatory frameworks such as the eIDAS Regulation~\cite{eidas}, 
+which governs trust services and electronic identification, and the General Data Protection Regulation (GDPR)~\cite{gdpr2016}, 
+which introduces requirements related to personal data processing, accountability, and retention limitation.

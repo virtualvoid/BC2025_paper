@@ -7,11 +7,19 @@ thereby eliminating the need for external workflow subsystems and reducing integ
 The engine is designed to support configurability, version control, persistent execution state, 
 and dynamic evaluation of process logic.
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\linewidth]{figures/workflow.png}
+  \caption{Workflow engine high level model.}
+  \label{fig:metadata-model}
+\end{figure}
+
 Unlike traditional hard-coded business logic implementations, the workflow layer allows process models 
 to be defined, modified, and versioned independently of application redeployment. 
 This design enables organizations to adapt their document-related processes 
 (e.g., approvals, registrations, reviews, or disposal procedures) 
 without modifying the core application codebase.
+\clearpage
 
 \subsection{Workflow Definition Model}
 
@@ -21,6 +29,14 @@ and newer versions maintain a reference to the previous version.
 This approach allows controlled evolution of workflow logic while preserving historical definitions for traceability and reproducibility.
 
 The engine supports multiple node types, including start and end nodes, human task nodes, decision nodes, and script nodes. 
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\linewidth]{figures/process-detail.png}
+  \caption{Example of a configurable workflow definition for invoice approval.}
+  \label{fig:workflow-definition-example}
+\end{figure}
+
 Transitions define the control flow between nodes and may include conditions or metadata used by the execution layer.
 
 \subsection{Execution Model}

@@ -1,15 +1,23 @@
 ﻿%!TEX root = ../main.tex
 \section*{Introduction}
-Enterprise document and records management systems (DMS/RMS) play a critical role in ensuring structured storage, traceability, and lifecycle control of organizational documents. 
-Modern organizations are required not only to manage digital documents efficiently, but also to comply with regulatory requirements concerning retention periods, classification schemes, disposal procedures, and auditability.
 
-Traditional document management solutions often focus primarily on storage and retrieval, while advanced business process handling is delegated to separate workflow systems. 
-This separation introduces integration complexity, data redundancy, and inconsistent lifecycle control. 
-There is therefore a need for a unified approach that combines records management principles (\cite{iso15489,moreq2010}) with flexible workflow execution in a single coherent architecture.
+Enterprise document and records management systems (DMS/RMS) are fundamental components of contemporary information infrastructures. 
+They ensure structured storage, controlled access, traceability, and lifecycle management of organizational documents. 
+In regulated environments, such systems must additionally support compliance with legal and normative requirements related to classification schemes, retention periods, disposal procedures, and auditability.
+
+While traditional document management platforms primarily address storage and retrieval functionality, advanced process coordination is often delegated to separate workflow or business process management systems. 
+This architectural separation increases integration complexity, introduces data redundancy, and may result in inconsistencies in document lifecycle control. 
+Consequently, organizations face challenges in maintaining a coherent link between records management principles and operational process execution. 
+Existing standards such as ISO 15489 and MoReq2010 define conceptual and functional requirements for records management~\cite{iso15489,moreq2010}, yet their practical integration with configurable workflow engines is frequently left to system-specific implementations.
 
 This paper presents the design and implementation of a prototype enterprise document and records management system with integrated workflow support. 
-The system is built using modern architectural principles and emphasizes modularity, scalability, and compliance-oriented data modeling. 
-The core contribution of this work lies in the integration of a configurable workflow engine with a structured records model reflecting hierarchical classification, retention rules, and audit requirements.
+The proposed solution adopts a unified architectural approach in which structured records modeling and configurable workflow execution are treated as mutually dependent components rather than isolated subsystems. 
+The system is implemented using modern architectural principles, emphasizing modularity, scalability, and compliance-oriented data modeling.
+
+The primary contribution of this work lies in: 
+(i) the integration of a versioned and configurable workflow engine directly into a structured records management model, 
+(ii) the alignment of workflow execution mechanisms with hierarchical classification structures and retention policies, and 
+(iii) the architectural design of a modular system that supports auditability and extensibility without sacrificing maintainability.
 
 The objective of this paper is to describe the architectural design, data model, workflow engine structure, and compliance mechanisms of the proposed solution, 
-and to demonstrate how these components form a consistent and extensible system suitable for enterprise environments.
+and to demonstrate how these elements form a coherent and extensible enterprise-ready system.

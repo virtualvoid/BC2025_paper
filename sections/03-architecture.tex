@@ -21,23 +21,45 @@ The user interface is implemented as a single-page application using React and T
 A component-based UI framework is employed to ensure consistency and maintainability. 
 This separation between backend services and frontend client supports independent evolution of presentation and business logic layers.
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\linewidth]{figures/system-architecture.png}
+  \caption{High-level system architecture of the proposed DMS solution.}
+  \label{fig:architecture}
+\end{figure}
+
 For deployment, the system is containerized and supports Docker-based orchestration. 
 The architecture is designed to be environment-agnostic, enabling both local development deployments and cloud-ready configurations. 
 This infrastructure approach aligns with modern enterprise deployment practices and ensures portability across different hosting environments.
-
 
 The architectural decisions follow established enterprise design principles \cite{fowler,sommerville} and align with modern service-oriented system patterns.
 
 \subsection{Configurable Metadata Model}
 
 In addition to core record attributes, the system supports configurable metadata bound to the evidence type (registry evidence category). 
-Each evidence type defines a set of user-defined fields (metadata schema) that are automatically projected into the record creation and update forms. 
-This approach allows organizations to adapt the system to heterogeneous document agendas without code changes, while preserving a unified storage and audit model.
+Each evidence type defines a metadata schema consisting of user-defined fields that extend the base record model. 
+These field definitions are automatically projected into record creation and update forms, allowing organizations to adapt the system to heterogeneous document agendas without modifying application code.
 
-Metadata fields are stored as structured key--value pairs with explicit typing and validation rules (e.g., text, numeric, boolean, date, or enumerations). 
-At runtime, the frontend dynamically renders form controls based on the evidence-level metadata definition, and the backend enforces validation to prevent schema drift and ensure data quality.
+Metadata definitions are stored in normalized relational form. 
+Each metadata field specifies a logical identifier, data type, validation constraints, optional enumeration values, and presentation-related parameters. 
+This schema layer represents the authoritative definition of allowed metadata structure for a given evidence type.
+
+At runtime, record-level metadata values are persisted as a serialized structured payload within the \textit{RecordMetadata} entity. 
+Instead of storing each metadata field as a separate relational column, the system stores a JSON-based dictionary containing key--value pairs corresponding to the defined metadata schema. 
+Prior to persistence, this payload is validated against the relational metadata definition to ensure type consistency, mandatory field enforcement, and controlled enumeration values.
+
+The frontend dynamically renders form controls based on the evidence-level metadata definition, while the backend enforces schema validation to prevent structural inconsistencies and schema drift. 
+This hybrid design combines the flexibility of semi-structured runtime storage with the integrity guarantees of schema-driven validation.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\linewidth]{figures/metadata.png}
+  \caption{Evidence-bound metadata model and runtime metadata storage.}
+  \label{fig:metadata-model}
+\end{figure}
 
 From a compliance perspective, evidence-bound metadata improves traceability and classification quality by ensuring that domain-specific attributes required by internal policies or legislation are consistently captured during record registration. 
-This aligns with standard records management principles that emphasize controlled metadata, retention context, and reproducibility of record descriptions \cite{iso15489,moreq2010}.
+By separating metadata definition (schema layer) from metadata instantiation (runtime layer), the system preserves reproducibility of record descriptions and supports auditability of historical record states. 
+This approach aligns with records management principles defined in ISO~15489 and MoReq2010, which emphasize controlled metadata structures, lifecycle context, and traceable record evolution~\cite{iso15489,moreq2010}.
 
-The design follows a schema-driven approach, reducing implementation-level customization and enabling controlled evolution of metadata requirements through configuration rather than redeployment.
+The overall design follows a schema-driven persistence strategy, reducing implementation-level customization and enabling controlled evolution of metadata requirements through configuration rather than redeployment.

@@ -1,12 +1,14 @@
 ﻿%!TEX root = ../main.tex
 \section{Conclusion}
 
-This paper presented the design and implementation of a prototype enterprise document and records management system with integrated workflow support. 
-The proposed solution combines structured classification modeling, compliance-oriented data design, and a configurable workflow engine within a modular service-based architecture.
+This paper presented the architectural design and implementation of a workflow-enabled enterprise document and records management system that integrates compliance-oriented modeling directly into its core domain structure. 
+Rather than treating workflow orchestration and records management as independent subsystems, the proposed solution unifies classification hierarchies, lifecycle attributes, configurable metadata, and versioned workflow execution within a single coherent architecture.
 
-By separating workflow definitions from execution state, incorporating version control mechanisms, and integrating auditability across core entities, 
-the system provides a flexible yet controlled environment suitable for enterprise document lifecycle management. 
-The architecture leverages modern backend technologies and container-based deployment principles to ensure portability and scalability.
+The presented model demonstrates that regulatory alignment, structural consistency, and process flexibility can coexist without introducing architectural fragmentation. 
+By separating workflow definitions from runtime execution state, enforcing schema-driven metadata validation, and embedding retention logic into classification entities, the system establishes a compliance-first foundation while preserving configurability and extensibility.
 
-The results demonstrate that records management and workflow orchestration can be effectively unified without compromising architectural clarity or maintainability. 
-Future work will focus on enhancing lifecycle automation mechanisms, extending compliance validation features, and evaluating performance characteristics under large-scale enterprise workloads.
+The architectural approach further illustrates how modern service-oriented design, asynchronous processing, and container-based deployment can support scalable and maintainable enterprise registry solutions. 
+The hybrid metadata persistence strategy and versioned workflow model contribute to both adaptability and auditability, which are essential characteristics of regulated information systems.
+
+Future work will focus on automated lifecycle enforcement mechanisms, extended compliance validation layers, and empirical performance evaluation under large-scale distributed workloads. 
+Additional research may also explore generalization of the proposed model to other regulated domains requiring traceable document-centric workflows.
