@@ -17,13 +17,14 @@
 \RequirePackage{titlesec}
 \titleformat{\section}
   {\normalfont\bfseries\fontsize{12}{14}\selectfont}
+  {\thesection}
+  {0.6em}
   {}
-  {0pt}
-  {}
+
 \titleformat{\subsection}
   {\normalfont\bfseries\fontsize{11}{13}\selectfont}
-  {}
-  {0pt}
+  {\thesubsection}
+  {0.6em}
   {}
 \titlespacing*{\section}{0pt}{10pt}{6pt}
 \titlespacing*{\subsection}{0pt}{8pt}{4pt}
@@ -124,6 +125,12 @@
   \noindent\hspace*{1cm}\textit{#1}\par
   \endgroup
   \vspace{2\baselineskip}
+}
+
+\newcommand{\ITAintroduction}[1]{
+  \section*{#1}
+  \addcontentsline{toc}{section}{#1}
+  \setcounter{section}{0}
 }
 
 \RequirePackage[numbers,sort&compress]{natbib}
