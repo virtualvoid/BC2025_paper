@@ -1,51 +1,53 @@
-\documentclass[conference]{IEEEtran}
+
+\documentclass{article}
+\usepackage{ita2026}
+
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\ITAshorttitle}{Information Technology Applications (ITA)}
+\renewcommand{\ITAshortauthor}{Juraj Suchán}
 
 \makeatletter
 \def\input@path{{sections/}}
 \makeatother
 
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-
-\usepackage{graphicx}
-\usepackage{xurl}
-\usepackage[hidelinks]{hyperref}
-\usepackage{booktabs}
-
-% --- Bibliography (BibTeX) ---
-\bibliographystyle{IEEEtran}
-
-\title{Design and Implementation of a Workflow-Enabled Enterprise Document Management System with Legislative Compliance}
-
-\author{
-\IEEEauthorblockN{Juraj Suchan}
-\IEEEauthorblockA{
-Department of Applied Informatics\\
-Faculty of Informatics\\
-Pan-European University\\
-Field of Study: Informatics\\
-Bratislava, Slovakia\\
-Email: xsuchan@paneurouni.com
-}
-}
-
 \begin{document}
-\maketitle
 
-\begin{IEEEkeywords}
-document management system, workflow engine, microservices, records management, legislative compliance
-\end{IEEEkeywords}
+\ITAjournalhead
+  {International Journal\\Information Technology Applications (ITA)}
+  {Volume XX, Number X, Feb. 2026}
 
-\input{sections/00-abstract}
-\input{sections/01-introduction}
-\input{sections/02-related-work}
-\input{sections/03-architecture}
-\input{sections/04-workflow-engine}
-\input{sections/05-compliance}
-\input{sections/06-discussion}
-\input{sections/07-conclusion}
+\ITAtitle{Design and Implementation of a Workflow-Enabled Enterprise\\Document Management System with Legislative Compliance}
+\ITAauthors{Juraj Suchán}
 
-\nocite{*}
+\begin{ITAabstract}
+This paper presents the design and implementation of an enterprise document and records management system with integrated workflow support. 
+The proposed solution addresses the need for structured management of registry records, including classification, retention policies, disposal procedures, and auditability, 
+while maintaining extensibility and modern architectural principles. 
+The system is based on a microservice-oriented architecture implemented in .NET, utilizing a relational database for structured metadata storage and distributed components for messaging and caching. 
+
+A dedicated workflow engine enables the definition and execution of configurable process models, including task, decision, and scripted nodes, allowing dynamic business logic execution and versioned workflow definitions. 
+The data model reflects hierarchical classification structures and regulatory requirements related to records lifecycle management. 
+The implementation emphasizes modularity, traceability, and compliance with records management principles \cite{iso15489,moreq2010}.
+
+The resulting system demonstrates that enterprise-grade document and records management functionality can be combined with flexible workflow execution within a unified architecture, 
+while preserving scalability and maintainability.
+\end{ITAabstract}
+
+\ITAkeywords{\textit{document management system, workflow engine, microservices, records management, legislative compliance}}
+
+\ITAacmccs{\textit{Write a suitable set of classification names...}}
+
+\input{01-introduction}
+\input{02-related-work}
+\input{03-architecture}
+\input{04-workflow-engine}
+\input{05-compliance}
+\input{06-discussion}
+\input{07-conclusion}
+
+\bibliographystyle{plainnat}
 \bibliography{refs}
 
 \end{document}
+
+
